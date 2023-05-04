@@ -1,0 +1,29 @@
+Question 3 b
+Use "./vote 100 10 40000 1003" for all experimenmts
+i)
+MC-1 processors:
+4.73u 0.01s 0:04.74r 6320kb
+
+SEM-1 processor:
+3.87u 0.01s 0:03.88r 6228kb
+
+BAR-1 processor:
+4.12u 0.01s 0:04.14r 6152kb
+
+MC-2 processors:
+107.63u 0.14s 0:53.88r 6328kb
+
+SEM-2 processor:
+76.15u 0.19s 0:38.16r 6332kb
+
+BAR-2 processor:
+81.31u 0.11s 0:40.71r 6268kb
+
+ii)
+The performance are generally similar among these three locks.
+MC performs the worst. And semaphore performs the best out of the three by about ~30% 
+compared to MC and about ~20%.
+
+iii)
+As kernel threads increase, the time decrease for three of them. This is probably because, when
+there are more threads, there are more needed communications.

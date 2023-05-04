@@ -1,0 +1,42 @@
+A2Q3
+
+Part a)
+One processor:
+    shared:1731905519
+    shared:1682369444
+    shared:1679291986
+    shared:1743398654
+    shared:1691711567
+    shared:1703374691
+    shared:1664601975
+    shared:1743190401
+    shared:1722853860
+    shared:1687743315
+
+Two processors:
+    shared:1806268736
+    shared:1570720985
+    shared:1555133983
+    shared:1521365282
+    shared:1596302395
+    shared:1573648959
+    shared:1569127221
+    shared:1695850985
+    shared:1562655402
+    shared:2296494630 
+
+Part b)
+No, they don't.
+Because both of them are concurrent programs. There might be race conditions. 
+For the incrementation, the operator add needs to load the value, compute the 
+new value and save it. Some threads might overwrite other threads.  
+
+Part c)
+Largest value: 600000000-6 = 599999994
+When there are no race conditions, the program runs sequentially and it will increase 600000000.
+So the final value will be 99999994
+Smallest value: -6
+
+Part d)
+Values for two processors are lower on average. Since it has more processors and therefore more threads,
+the possibility of race conditions are higher. 

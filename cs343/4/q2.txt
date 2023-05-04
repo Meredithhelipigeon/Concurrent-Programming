@@ -1,0 +1,17 @@
+a)
+Rule 5: starvation will be broken.
+This is because:
+As we declare that turn=0, suppose h1 and h0 enters and declare the intetions at the same time.
+h0 will go to the critical section since turn==0, while h1 is waiting in the busy loop "while (intent[you]) {}" Line.
+h0 exits the critical section very quickly and then changes the intention to false very quickly. It goes back to line 
+1 to declare the intention to true again quickly and at the same time, h1 doesnt notice that since its too quickly.
+And turn==0 since line 4 hasn't been executed by h1 that changes the turn.
+
+The scenario could repeat all the time, which causes the starvation of h1.
+
+
+b)
+This is because the above scenario requires one task moves very quickly from line 5, 6 and back to 1 "every" single
+time it goes through the loop.
+In a large program, the times it goes through the loop is big. And therefore, there might be one time that this task doesn't act quickly 
+and other task could go to the critical section and the starvation will not happen.

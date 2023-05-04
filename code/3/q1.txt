@@ -1,0 +1,57 @@
+a)
+In this question, we set the second argument as 200000000 for all cases
+
+STACK:
+task = 1, 1.14u 0.00s 0:01.15r 4680kb
+task = 2, 2.55u 0.00s 0:01.28r 4960kb
+task = 4, 4.55u 0.00s 0:01.33r 5136kb
+
+DARRAY:
+task = 1, 3.40u 0.00s 0:03.40r 4944kb
+task = 2, 7.50u 0.00s 0:03.75r 4840kb
+task = 4, 13.33u 0.02s 0:03.39r 5060kb
+
+VECTOR1:
+task = 1, 3.81u 0.00s 0:03.81r 4996kb
+task = 2, 8.70u 0.01s 0:04.40r 5052kb
+task = 4, 19.07u 0.01s 0:04.78r 5272kb
+
+VECTOR2:
+task = 1, 23.37u 0.03s 0:23.36r 4896kb
+task = 2, 51.36u 0.07s 0:25.75r 5044kb
+task = 4, 103.04u 0.13s 0:25.79r 5056kb
+
+When task=1, user time is usually approximately the same to real time.
+When task=2,4, user time is much longer than the the real time.
+
+b)
+STACK: 
+    - User time increases linearly and the real time increases with smaller amount each time.
+    - Allocation increases with smaller amount each time.
+DARRAY: 
+    - User time increases with larger amount each time (expontentially) and real time first increases and then decreases.
+    - Allocation decreases first and then increases.
+VECTOR1:
+    - User time increases with larger amount each time (expontentially) and real time increases with smaller amount each time.
+    - Allocation increases with larger amount each time.
+VECTOR2:
+    - User time increases with larger amount each time (expontentially) and real time increases with smaller amount each time.
+    - Allocation increases with smaller amount each time.
+
+c)
+STACK performs the best out of these four. It uses the least user time and real time given the same times and tasks.
+And the user time also increase slowlier.
+It uses the stack memory instead of dynamic allocation.
+From textbook, we know that stack allocation eliminates explicit storage-management and is more efficient than heap allocation
+and therefore perform much better than the remaining three.
+
+DARRAY performs better than VECTOR1 and VECTOR2. It uses less user time and real time given the same times and tasks.
+This is probably because we use unique_ptr here instead of std vector library. Using std vector library gives us more 
+abstraction but also may affect the performance.
+
+VECTOR1 performs better than VECTOR2. It uses less user time and real time given the same times and tasks.
+VECTOR1 doesnt use push_back. It allocate the array with given size at first. Accessing the vector is easier 
+for concurrency. But for the push_back, we have to do it sequentially.
+
+For DARRAY, the real time decreases when tasks increases is probably because when tasks are more, we could enable
+concurrency to do the tasks and more parallelism can be enabled from the threads.

@@ -1,0 +1,52 @@
+In all the experiments, I use "vote 100 10 10000 1003"
+i)
+One-processor:
+EXT: 1.93u 0.00s 0:01.96r 6240kb
+INT: 1.25u 0.00s 0:01.24r 6196kb
+INTB: 9.42u 0.03s 0:09.87r 6312kb
+AUTO: 2.22u 0.03s 0:02.27r 6200kb
+TASK: 1.51u 0.00s 0:01.59r 6256kb
+
+Two-processor:
+EXT: 9.63u 0.04s 0:05.04r 6188kb
+INT: 13.72u 0.03s 0:07.39r 6196kb
+INTB: 70.94u 0.43s 0:41.54r 6276kb
+AUTO: 13.68u 0.04s 0:06.92r 6236kb
+TASK: 14.33u 0.02s 0:07.28r 6104kb
+
+For one-processor:
+EXT rtime is 0.03s longer than utime
+INT rtime is 0.01s shorter than utime
+INTB rtime is 0.45s longer than utime
+AUTO rtime is 0.05s longer than utime
+TASK rtime is 0.08s longer than utime
+
+For two-processor:
+EXT rtime is 4.59s shorter than utime
+INT rtime is 6.33s shorter than utime
+INTB rtime is 29.4s shorter than utime
+AUTO rtime is 6.76s shorter than utime
+TASK rtime is 7.05s shorter than utime
+
+In conclusion, for one-processor, rtime is similar or a little bit longer than the user time.
+For two-processor, rtime is about half of the user time.
+
+ii)
+For single processor
+INT > TASK, EXT > AUTO > INTB
+INT performs the best out of the five. It is only about 65% of the time that TASK and EXT uses.
+AUTO performs slight worse, which uses about 7% time more compared to INT and AUTO.
+INTB performs the worst, which takes 400% of additional time compared to AUTO.
+
+For two processor,
+EXT > AUTO, INT > TASK > INTB
+EXT performs the best out of the five. It is only about 75% of the time that INT and AUTO uses.
+TASK performs slight worse, which uses about 10% time more compared to INT and AUTO.
+INTB performs the worst, which takes 500% of additional time compared to AUTO.
+
+iii)
+The processing of tally votes becomes a bottleneck as the voters are not actively contributing, causing the processors to spin aimlessly in search of tasks. 
+With an increase in kernel threads, the real-time processing time also increases significantly by about 700%.
+Adding a second processor to the program results in slower performance, as measured in real-time. This is likely due to the increased concurrency, 
+causing the threads to spend more time on communication tasks.
+

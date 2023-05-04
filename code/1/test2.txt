@@ -1,0 +1,8 @@
+10Lu
+10UL
+0u
+0x11l
+0xLU
+0x123456luextraneous
+UL
+1uul

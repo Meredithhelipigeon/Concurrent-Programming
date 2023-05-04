@@ -1,0 +1,4 @@
+./exception 50000000 50 1003
+./returnglobal 50000000 50 1003
+./returntype 50000000 50 1003
+./returntypec 50000000 50 1003
